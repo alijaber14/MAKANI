@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>  مكاني</title>
+
+<style>
+    
+ body{
+    margin:0;
+    font-family:Arial;
+    text-align:center;
+    overflow-x:hidden;
+    position:relative;
+
+    background-image:url("img/bg.jpg");
+    background-size:cover;
+    background-position:center;
+    background-attachment:fixed;
+}
+
+/* 🔥 طبقة بلور + تغميق */
+body::before{
+    content:"";
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+
+    backdrop-filter: blur(7px);   /* 👈 البلور */
+    -webkit-backdrop-filter: blur(6px);
+
+    background:rgba(0,0,0,0.10);  /* 👈 تغميق */
+    z-index:-1;
+}
+
+
+
+@keyframes bgMove {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
+/* الهيدر */
+.header{
+    padding:120px 20px 70px;
+}
+
+.header h1{
+    font-size:85px;
+    margin:0;
+    font-weight:bold;
+    letter-spacing:4px;
+    color:#fff;
+    text-shadow:0 5px 25px rgba(0,0,0,0.5);
+}
+
+.header p{
+    font-size:22px;
+    color:#ffffff;
+}
+
+
+/* السوشيال */
+.social{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin:30px 0;
+}
+
+/* 👇 ده المهم */
+.social a{
+    text-decoration:none;
+    color:#111;
+    font-size:18px;
+    font-weight:bold;
+
+    padding:15px 25px;
+    border-radius:15px;
+
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+
+    transition:0.3s;
+}
+
+/* hover */
+.social a:hover{
+    transform:translateY(-5px) scale(1.05);
+    background:#1e7e01;
+    color:#fff;
+}
+
+
+/* الأقسام */
+.categories{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap:25px;
+    padding:30px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.cat{
+    position:relative;
+    height:240px;
+    border-radius:25px;
+    overflow:hidden;
+    cursor:pointer;
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+
+    transition:0.5s;
+
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+}
+
+.cat::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,
+    rgba(0,0,0,0.8),
+    rgba(0,0,0,0.1));
+}
+
+.cat span{
+    position:relative;
+    z-index:2;
+    color:#fff;
+    font-size:28px;
+    font-weight:bold;
+    margin-bottom:20px;
+}
+
+.cat:hover{
+    transform:scale(1.05);
+}
+
+/* باقي الموقع */
+.section{ display:none; padding:20px; }
+
+.back{
+    margin:15px;
+    display:inline-block;
+    padding:8px 15px;
+    background:#111;
+    color:#fff;
+    border-radius:10px;
+    cursor:pointer;
+}
+
+.products{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap:15px;
+    max-width:1000px;
+    margin:auto;
+}
+
+.card{
+    background:#fff;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.card-body{
+    display:none;
+}
+
+
+.order-btn{
+    width:100%;
+    margin-top:10px;
+    background:#25D366;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:10px;
+    cursor:pointer;
+}
+.subtitle{
+    font-size:24px;
+    font-weight:500;
+    color:#fff;
+    letter-spacing:2px;
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+.img-box{
+    position:relative;
+    line-height:0;
+}
+
+
+.zoom-icon{
+    position:absolute;
+    top:10px;
+    right:10px;
+    background:rgba(0,0,0,0.6);
+    color:#fff;
+    padding:8px;
+    border-radius:50%;
+    font-size:16px;
+    opacity:0;
+    transition:0.3s;
+}
+
+.img-box:hover .zoom-icon{
+    opacity:1;
+}
+
+.img-box img{
+    width:100%;
+height: 350px;
+    object-fit:cover;
+    display:block;
+}
+
+
+.img-box:hover img{
+    transform:scale(1.05);
+}
+
+.modal{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0, 0, 0, 0.9);
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+.modal img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:20px;
+    font-size:30px;
+    color:#fff;
+    cursor:pointer;
+}
+@media (max-width: 768px){
+
+    /* الهيدر أصغر */
+    .header{
+        padding:15px 10px;
+    }
+
+    .header h1{
+        font-size:28px;
+    }
+
+    .subtitle{
+        font-size:16px;
+    }
+
+    /* الأقسام تبقى صف واحد */
+    .categories{
+        display:flex;
+        flex-wrap:nowrap;   /* يمنع النزول تحت */
+        overflow-x:auto;    /* يسمح بالسحب يمين وشمال */
+        gap:10px;
+        padding:10px;
+    }
+
+    .cat{
+        flex:0 0 auto;
+        padding:10px 15px;
+        font-size:14px;
+        border-radius:12px;
+        white-space:nowrap;
+    }
+
+    /* المنتجات أصغر */
+    .products{
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .img-box img{
+        height:180px;
+    }
+}
+.categories{
+    grid-template-columns: repeat(3, 1fr);
+}
+@media (max-width: 768px){
+
+    .social{
+        gap:10px;
+        margin:20px 0;
+    }
+
+    .social a{
+        font-size:14px;
+        padding:10px 14px;
+        border-radius:12px;
+    }
+}
+
+@media (max-width: 768px){
+
+   
+}
+.why{
+    max-width:1000px;
+    margin:60px auto;
+    padding:20px;
+    text-align:center;
+}
+
+.why h2{
+    font-size:28px;
+    margin-bottom:30px;
+        color:#ffffff;
+
+}
+
+/* الكروت */
+.why-box{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap:20px;
+}
+
+.why-card{
+    padding:25px;
+    border-radius:20px;
+
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+    transition:0.3s;
+}
+
+.why-card:hover{
+    transform:translateY(-10px);
+    background:#1e7e01;
+    color:#fff;
+}
+
+.icon{
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.why-card h3{
+    margin:10px 0;
+}
+@media (max-width:768px){
+    .why-box{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+.whatsapp-float{
+    position:fixed;
+    bottom:20px;
+    left:20px;
+
+    width:65px;
+    height:65px;
+
+    background:#25D366;
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:32px;
+    text-decoration:none;
+
+    z-index:9999;
+
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
+
+    transition:0.3s;
+}
+
+.whatsapp-float:hover{
+    transform:scale(1.1);
+}
+</style>
+</head>
+
+<body>
+<input type="file" id="bgUpload" accept="image/*" onchange="setBg(event)" style="display:none;">
+
+<!-- الصفحة الرئيسية -->
+<div id="home">
+
+    <div class="header">
+<h1>  MAKANI</h1>
+<p class="subtitle">اختار القسم اللي يناسبك</p>
+    </div>
+
+    <!-- سوشيال -->
+    <div class="social-box">
+
+    <div class="social">
+        <a href="https://wa.me/201017395267" target="_blank">واتساب</a>
+        <a href="https://www.facebook.com/share/1CqDAGspKe/" target="_blank">فيسبوك</a>
+        <a href="#">إنستجرام</a>
+        <a href="#">تيك توك</a>
+    </div>
+
+</div>
+
+
+
+    <!-- الأقسام -->
+    <div class="categories">
+
+<div class="cat"
+style="background-image:url('img/bed1.jpeg')"
+onclick="showSection('bed')">
+<span>سراير</span>
+</div>
+
+<div class="cat"
+style="background-image:url('img/sofa1.jpeg')"
+onclick="showSection('sofa')">
+<span>ركنة</span>
+</div>
+
+<div class="cat"
+style="background-image:url('img/Entry1.jpeg')"
+onclick="showSection('Entry')">
+<span>انترية</span>
+</div>
+
+<div class="cat"
+style="background-image:url('img/curtains1.jfif')"
+onclick="showSection('curtains')">
+<span>ستائر</span>
+</div>
+
+<div class="cat"
+style="background-image:url('img/Dining1.jpeg')"
+onclick="showSection('Dining')">
+<span>سفرة</span>
+</div>
+
+</div>
+<div class="why">
+    <h2>ليه تختار  MAKANI
+</h2>
+
+    <div class="why-box">
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>تفصيل حسب الطلب</h3>
+            <p>بننفذ أي تصميم على مزاجك وبأعلى دقة</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>خامات عالية الجودة</h3>
+            <p>نستخدم أفضل أنواع الخشب لضمان المتانة</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>أسعار مناسبة</h3>
+            <p>أفضل سعر مقابل أعلى جودة</p>
+        </div>
+
+        <div class="why-card">
+            <div class="icon"></div>
+            <h3>التزام بالمواعيد</h3>
+            <p>تسليم في الوقت بدون تأخير</p>
+        </div>
+
+    </div>
+</div>
+
+
+</div>
+
+<!-- سرير -->
+<div class="section" id="bed">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>سرير</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed1.jpg')">
+                <img src="img/bed1.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed2.jpg')">
+                <img src="img/bed2.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed3.jpg')">
+                <img src="img/bed3.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed4.jpg')">
+                <img src="img/bed4.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed5.jpg')">
+                <img src="img/bed5.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed6.jpg')">
+                <img src="img/bed6.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed7.jpg')">
+                <img src="img/bed7.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed8.jpg')">
+                <img src="img/bed8.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed9.jpg')">
+                <img src="img/bed9.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/bed10.jpg')">
+                <img src="img/bed10.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+    </div>
+</div>
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+<!-- ركنة -->
+<div class="section" id="sofa">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>ركنة</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa1.jpeg')">
+                <img src="img/sofa1.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa2.jpeg')">
+                <img src="img/sofa2.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa3.jpeg')">
+                <img src="img/sofa3.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa4.jpeg')">
+                <img src="img/sofa4.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa5.jpeg')">
+                <img src="img/sofa5.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa6.jpeg')">
+                <img src="img/sofa6.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa7.jpeg')">
+                <img src="img/sofa7.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa8.jpeg')">
+                <img src="img/sofa8.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa9.jpeg')">
+                <img src="img/sofa9.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa10.jpeg')">
+                <img src="img/sofa10.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/sofa11.jpeg')">
+                <img src="img/sofa11.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+    </div>
+</div>
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+
+
+<!-- انترية -->
+<div class="section" id="Entry">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>انترية</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry1.jpeg')">
+                <img src="img/Entry1.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry2.jpeg')">
+                <img src="img/Entry2.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry3.jpeg')">
+                <img src="img/Entry3.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry4.jpeg')">
+                <img src="img/Entry4.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+      
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry6.jpeg')">
+                <img src="img/Entry6.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry7.jpeg')">
+                <img src="img/Entry7.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry8.jpeg')">
+                <img src="img/Entry8.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
+                <img src="img/Entry9.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+    </div>
+</div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+
+<!-- ستائر -->
+<div class="section" id="curtains">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>ستائر</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains1.jpeg')">
+                <img src="img/curtains1.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains2.jpeg')">
+                <img src="img/curtains2.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains3.jpeg')">
+                <img src="img/curtains3.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains4.jpeg')">
+                <img src="img/curtains4.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains5.jpeg')">
+                <img src="img/curtains5.jpg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains6.jpeg')">
+                <img src="img/curtains6.webp">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+  <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains7.jpeg')">
+                <img src="img/Curtains7.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+     <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains6.jpeg')">
+                <img src="img/Curtains8.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+  <div class="card">
+            <div class="img-box" onclick="openImage('img/curtains6.jpeg')">
+                <img src="img/Curtains9.jfif">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+
+<!-- ركن -->
+<div class="section" id="Dining">
+    <div class="back" onclick="goHome()"> رجوع</div>
+    <h2>سفرة</h2>
+
+    <div class="products">
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining1.jpeg')">
+                <img src="img/Dining1.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining2.jpeg')">
+                <img src="img/Dining2.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining3.jpeg')">
+                <img src="img/Dining3.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining4.jpeg')">
+                <img src="img/Dining4.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining5.jpeg')">
+                <img src="img/Dining5.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining6.jpeg')">
+                <img src="img/Dining6.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining7.jpeg')">
+                <img src="img/Dining7.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining8.jpeg')">
+                <img src="img/Dining8.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining9.jpeg')">
+                <img src="img/Dining9.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+        <div class="card">
+            <div class="img-box" onclick="openImage('img/Dining10.jpeg')">
+                <img src="img/Dining10.jpeg">
+                <div class="zoom-icon">🔍</div>
+            </div>
+            <div class="card-body"></div>
+        </div>
+
+    </div>
+</div>
+        </div>
+
+        <!-- باقي الصور زي ما هي... -->
+
+    </div>
+</div>
+<script>
+function showSection(id){
+    document.getElementById("home").style.display = "none";
+    document.querySelectorAll(".section").forEach(sec => sec.style.display="none");
+    document.getElementById(id).style.display = "block";
+}
+
+function goHome(){
+    document.getElementById("home").style.display = "block";
+    document.querySelectorAll(".section").forEach(sec => sec.style.display="none");
+}
+
+function orderProduct(productName){
+    let phone = "201010529776";
+    let message = "عايز اطلب: " + productName;
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, '_blank');
+}
+function setBg(event){
+    let file = event.target.files[0];
+    let reader = new FileReader();
+
+    reader.onload = function(e){
+        document.body.style.backgroundImage = "url(" + e.target.result + ")";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundAttachment = "fixed";
+    }
+
+    reader.readAsDataURL(file);
+}
+
+function closeImage(){
+    document.getElementById("imgModal").style.display = "none";
+}
+function openImage(src){
+    document.getElementById("modalImg").src = src;
+    document.getElementById("imgModal").style.display = "flex";
+}
+
+function closeImage(){
+    document.getElementById("imgModal").style.display = "none";
+}
+
+</script>
+<div id="imgModal" class="modal" onclick="closeImage()">
+    <span class="close-btn">✖</span>
+    <img id="modalImg">
+</div>
+
+
+</body>
+</html>
+ 
