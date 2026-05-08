@@ -176,6 +176,9 @@ body::before{
     border-radius:15px;
     overflow:hidden;
     box-shadow:0 4px 10px rgba(0,0,0,0.1);
+
+    display:flex;
+    flex-direction:column;
 }
 
 
@@ -190,7 +193,7 @@ body::before{
 }
 
 .card-body{
-    display:none;
+    padding:15px;
 }
 
 
@@ -506,6 +509,31 @@ height: 350px;
         transform:translateX(0);
     }
 }
+.product-title{
+    padding:15px 10px;
+    font-size:20px;
+    font-weight:bold;
+    color:#111;
+    background:#fff;
+}
+
+.order-btn{
+    width:100%;
+    background:#25D366;
+    color:#fff;
+    border:none;
+    padding:12px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.order-btn:hover{
+    background:#1ebe5d;
+    transform:scale(1.03);
+}
 </style>
 </head>
 
@@ -608,85 +636,148 @@ onclick="showSection('Dining')">
     <h2>سرير</h2>
 
     <div class="products">
-
         <div class="card">
+                <div class="product-title">سرير مودرن 1</div>
+
             <div class="img-box" onclick="openImage('img/bed1.jpeg')">
                 <img src="img/bed1.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
-        </div>
+             <div class="card-body">
 
+        <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 1')">
+            اطلب الآن
+        </button>
+        </div>
+ 
+
+    </div>
         <div class="card">
+                            <div class="product-title">سرير مودرن 2</div>
+
             <div class="img-box" onclick="openImage('img/bed2.jpeg')">
                 <img src="img/bed2.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 2')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 3</div>
+
             <div class="img-box" onclick="openImage('img/bed3.jpeg')">
                 <img src="img/bed3.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 3')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 4</div>
+
             <div class="img-box" onclick="openImage('img/bed4.jpeg')">
                 <img src="img/bed4.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 4')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 5</div>
+
             <div class="img-box" onclick="openImage('img/bed5.jpeg')">
                 <img src="img/bed5.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 5')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 6</div>
+
             <div class="img-box" onclick="openImage('img/bed6.jpeg')">
                 <img src="img/bed6.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 6')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 7</div>
+
             <div class="img-box" onclick="openImage('img/bed7.jpeg')">
                 <img src="img/bed7.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 7')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 8</div>
+
             <div class="img-box" onclick="openImage('img/bed8.jpeg')">
                 <img src="img/bed8.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 8')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 9</div>
+
             <div class="img-box" onclick="openImage('img/bed9.jpeg')">
                 <img src="img/bed9.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 9')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                            <div class="product-title">سرير مودرن 10</div>
+
             <div class="img-box" onclick="openImage('img/bed10.jpeg')">
                 <img src="img/bed10.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('سرير مودرن 10')">
+            اطلب الآن
+        </button>
         </div>
 
     </div>
@@ -703,125 +794,200 @@ onclick="showSection('Dining')">
     <div class="products">
 
         <div class="card">
+                                        <div class="product-title">ركنة  1</div>
+
             <div class="img-box" onclick="openImage('img/sofa1.jpeg')">
                 <img src="img/sofa1.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 1')">
+            اطلب الآن
+        </button>
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  2</div>
+
             <div class="img-box" onclick="openImage('img/sofa2.jpeg')">
                 <img src="img/sofa2.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 2')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  3</div>
+
             <div class="img-box" onclick="openImage('img/sofa3.jpeg')">
                 <img src="img/sofa3.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 3')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  4</div>
+
             <div class="img-box" onclick="openImage('img/sofa4.webp')">
                 <img src="img/sofa14.webp">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 4')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  5</div>
+
             <div class="img-box" onclick="openImage('img/sofa5.jpeg')">
                 <img src="img/sofa5.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 5')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  6</div>
+
             <div class="img-box" onclick="openImage('img/sofa6.jpeg')">
                 <img src="img/sofa6.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 6')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  7</div>
+
             <div class="img-box" onclick="openImage('img/sofa7.jfif')">
                 <img src="img/sofa7.jfif">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 7')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  8</div>
+
             <div class="img-box" onclick="openImage('img/sofa8.jfif')">
                 <img src="img/sofa8.jfif">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 8')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  9</div>
+
             <div class="img-box" onclick="openImage('img/sofa9.jfif')">
                 <img src="img/sofa9.jfif">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 9')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  10</div>
+
             <div class="img-box" onclick="openImage('img/sofa10.jpg')">
                 <img src="img/sofa10.jpg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 10')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  11</div>
+
             <div class="img-box" onclick="openImage('img/sofa11.jfif')">
                 <img src="img/sofa11.jfif">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 11')">
+            اطلب الآن
         </div>
 
 
         <div class="card">
+                                                    <div class="product-title">ركنة  12</div>
+
             <div class="img-box" onclick="openImage('img/sofa11.jpg')">
                 <img src="img/sofa12.jpg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 12')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                                    <div class="product-title">ركنة  13</div>
+
             <div class="img-box" onclick="openImage('img/sofa11.jfif')">
                 <img src="img/sofa13.jfif">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 13')">
+            اطلب الآن
         </div>
 
 
-        <div class="card">
+        <div class="card">                                        <div class="product-title">ركنة  14</div>
+
             <div class="img-box" onclick="openImage('img/sofa11.webp')">
                 <img src="img/sofa14.webp">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 14')">
+            اطلب الآن
         </div>
 
  <div class="card">
+                                            <div class="product-title">ركنة 15</div>
+
             <div class="img-box" onclick="openImage('img/sofa11.jpg')">
                 <img src="img/sofa15.jpg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  ركنة 15')">
+            اطلب الآن
         </div>
 
     </div>
@@ -840,112 +1006,183 @@ onclick="showSection('Dining')">
     <div class="products">
 
         <div class="card">
+            <div class="product-title">انترية 1</div>
             <div class="img-box" onclick="openImage('img/Entry1.jpeg')">
                 <img src="img/Entry1.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 1')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                        <div class="product-title">انترية 2</div>
+
             <div class="img-box" onclick="openImage('img/Entry2.jpeg')">
                 <img src="img/Entry2.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 2')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                        <div class="product-title">انترية 3</div>
+
             <div class="img-box" onclick="openImage('img/Entry3.jpeg')">
                 <img src="img/Entry3.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 3')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                        <div class="product-title">انترية 4</div>
+
             <div class="img-box" onclick="openImage('img/Entry4.jpeg')">
                 <img src="img/Entry4.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 4')">
+            اطلب الآن
         </div>
 
       
         <div class="card">
+                        <div class="product-title">انترية 5</div>
+
             <div class="img-box" onclick="openImage('img/Entry6.jpeg')">
                 <img src="img/Entry6.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 5')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                        <div class="product-title">انترية 6</div>
+
             <div class="img-box" onclick="openImage('img/Entry7.jpeg')">
                 <img src="img/Entry7.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 6')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                        <div class="product-title">انترية 7</div>
+
             <div class="img-box" onclick="openImage('img/Entry8.jpeg')">
                 <img src="img/Entry8.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 7')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                        <div class="product-title">انترية 8</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry9.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 8')">
+            اطلب الآن
         </div>
+
          <div class="card">
+                        <div class="product-title">انترية 9</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry10.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 9')">
+            اطلب الآن
         </div>
  <div class="card">
+                <div class="product-title">انترية 10</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry11.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+            <div class="product-title">انترية 10</div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 10')">
+            اطلب الآن
         </div> 
 
  <div class="card">
+                <div class="product-title">انترية 11</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry12.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 11')">
+            اطلب الآن
         </div>
  <div class="card">
+                <div class="product-title">انترية 12</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry13.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 12')">
+            اطلب الآن
         </div>
 
  <div class="card">
+                <div class="product-title">انترية 13</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry14.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 13')">
+            اطلب الآن
         </div>
  <div class="card">
+                <div class="product-title">انترية 14</div>
+
             <div class="img-box" onclick="openImage('img/Entry9.jpeg')">
                 <img src="img/Entry15.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  انترية 14')">
+            اطلب الآن
         </div>
     </div>
 </div>
@@ -969,83 +1206,133 @@ onclick="showSection('Dining')">
     <div class="products">
 
         <div class="card">
+                            <div class="product-title">سفرة 1</div>
+
             <div class="img-box" onclick="openImage('img/Dining1.jpeg')">
                 <img src="img/Dining1.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+             <button class="order-btn"
+        onclick="orderProduct('  سفرة 1')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 2</div>
+
             <div class="img-box" onclick="openImage('img/Dining2.jpeg')">
                 <img src="img/Dining2.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 2')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 3</div>
+
             <div class="img-box" onclick="openImage('img/Dining3.jpeg')">
                 <img src="img/Dining3.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 3')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 4</div>
+
             <div class="img-box" onclick="openImage('img/Dining4.jpeg')">
                 <img src="img/Dining4.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 4')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 5</div>
+
             <div class="img-box" onclick="openImage('img/Dining5.jpeg')">
                 <img src="img/Dining5.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 5')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 6</div>
+
             <div class="img-box" onclick="openImage('img/Dining6.jpeg')">
                 <img src="img/Dining6.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 6')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 7</div>
+
             <div class="img-box" onclick="openImage('img/Dining7.jpeg')">
                 <img src="img/Dining7.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 7')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 8</div>
+
             <div class="img-box" onclick="openImage('img/Dining8.jpeg')">
                 <img src="img/Dining8.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 8')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 9</div>
+
             <div class="img-box" onclick="openImage('img/Dining9.jpeg')">
                 <img src="img/Dining9.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 9')">
+            اطلب الآن
         </div>
 
         <div class="card">
+                                        <div class="product-title">سفرة 10</div>
+
             <div class="img-box" onclick="openImage('img/Dining10.jpeg')">
                 <img src="img/Dining10.jpeg">
                 <div class="zoom-icon">🔍</div>
             </div>
             <div class="card-body"></div>
+              <button class="order-btn"
+        onclick="orderProduct('  سفرة 10')">
+            اطلب الآن
         </div>
 
     </div>
@@ -1068,10 +1355,17 @@ function goHome(){
     document.querySelectorAll(".section").forEach(sec => sec.style.display="none");
 }
 
-function orderProduct(productName){
-    let phone = "201010529776";
-    let message = "عايز اطلب: " + productName;
+function orderProduct(btn){
+
+    let card = btn.closest(".card");
+    let name = card.querySelector(".product-title").innerText;
+
+    let phone = "201017395267";
+
+    let message = "عايز اطلب: " + name;
+
     let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+
     window.open(url, '_blank');
 }
 function setBg(event){
@@ -1099,7 +1393,12 @@ function openImage(src){
 function closeImage(){
     document.getElementById("imgModal").style.display = "none";
 }
-
+function orderProduct(productName){
+    let phone = "201017395267";
+    let message = "عايز اطلب: " + productName;
+    let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+    window.open(url, '_blank');
+}
 </script>
 <div id="imgModal" class="modal" onclick="closeImage()">
     <span class="close-btn">✖</span>
