@@ -436,6 +436,76 @@ height: 350px;
 .whatsapp-float:hover{
     transform:scale(1.1);
 }
+
+/* خلفية اللوجوهات */
+.floating-logos{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:0;
+    pointer-events:none;
+}
+#home,
+.section,
+.header,
+.social,
+.categories,
+.why{
+    position:relative;
+    z-index:2;
+}
+
+/* الصف */
+.logo-row{
+    position:absolute;
+    width:200%;
+    display:flex;
+    gap:120px;
+    opacity:0.12;
+}
+
+/* اللوجو */
+.logo-row img{
+    width:200px;
+    height:auto;
+}
+
+/* الصف الأول */
+.row1{
+    top:20%;
+    animation:moveRight 35s linear infinite;
+}
+
+/* الصف الثاني */
+.row2{
+    top:55%;
+    animation:moveLeft 35s linear infinite;
+}
+
+/* حركة يمين -> شمال */
+@keyframes moveRight{
+    0%{
+        transform:translateX(0);
+    }
+
+    100%{
+        transform:translateX(-50%);
+    }
+}
+
+/* حركة شمال -> يمين */
+@keyframes moveLeft{
+    0%{
+        transform:translateX(-50%);
+    }
+
+    100%{
+        transform:translateX(0);
+    }
+}
 </style>
 </head>
 
@@ -446,7 +516,7 @@ height: 350px;
 <div id="home">
 
     <div class="header">
-<h1>  MAKANI</h1>
+<h1>  MAKANI HOME</h1>
 <p class="subtitle">اختار القسم اللي يناسبك</p>
     </div>
 
@@ -458,6 +528,8 @@ height: 350px;
         <a href="https://www.facebook.com/share/1CqDAGspKe/" target="_blank">فيسبوك</a>
         <a href="#">إنستجرام</a>
         <a href="#">تيك توك</a>
+        <a href="https://maps.app.goo.gl/UkWvgNK8P8EtRanP6">لوكيشن </a>
+
     </div>
 
 </div>
@@ -499,7 +571,7 @@ onclick="showSection('Dining')">
 
 </div>
 <div class="why">
-    <h2>ليه تختار  MAKANI
+    <h2>ليه تختار  MAKANI HOME
 </h2>
 
     <div class="why-box">
@@ -1039,7 +1111,38 @@ function closeImage(){
     <img id="modalImg">
 </div>
 
+<!-- لوجوهات متحركة -->
+<div class="floating-logos">
 
+   <!-- لوجوهات متحركة -->
+<div class="floating-logos">
+
+  <!-- لوجوهات متحركة -->
+<div class="floating-logos">
+
+    <!-- صف يمين لشمال -->
+    <div class="logo-row row1">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+    </div>
+
+    <!-- صف شمال ليمين -->
+    <div class="logo-row row2">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+        <img src="img/LOGO1.png">
+    </div>
+
+</div>
+
+</div>
 </body>
 </html>
  
